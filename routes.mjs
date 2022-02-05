@@ -1,11 +1,11 @@
 import db from './models/index.mjs';
-
-// import your controllers here
+import initDrummersController from './controllers/drummers.mjs';
 
 export default function bindRoutes(app) {
+  const drummersController = initDrummersController(db);
 
-  // initialize the controller functions here
-  // pass in the db for all callbacks
-
-  // define your route matchers here using app
+  app.get('/', drummersController.index);
+  app.get('/drummer/:id', drummersController.index);
+  app.post('/reservation/:drummer_id', drummersController.index);
+  app.get('/reservation/:drummer_id', drummersController.index);
 }
